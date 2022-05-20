@@ -3,6 +3,19 @@ const BASE_URL = "https://ptf-web-dizajn-2022.azurewebsites.net/";
 let books = [];
 let authors = [];
 
+const forms = document.querySelectorAll('.needs-validation')
+
+
+Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+        }
+        form.classList.add('was-validated')
+    }, false)
+})
+
 const fetchBooks = () => {
     fetch(`${BASE_URL}/books`)
     .then(res => {
@@ -27,8 +40,10 @@ fetch(`${BASE_URL}/authors`)
 
 const renderBooks = (books) => {
     const booksRow = document.getElementById('booksRow');
+    const booksSearch = document.getElementById('datalistOptions');
 
     let resultBooksHtml = '';
+    let resultSearchHtml = '';
 
     books.forEach(book => {
         resultBooksHtml += `
@@ -43,10 +58,13 @@ const renderBooks = (books) => {
             </div>
         </div>
         `;
-
+        resultSearchHtml += `
+        <option value="${book.name}">
+        `;
     });
 
     booksRow.innerHTML = resultBooksHtml;
+    booksSearch.innerHTML = resultSearchHtml;
 }
 
 const fillEditData = (bookId) => {
@@ -142,4 +160,19 @@ const postBook = async () => {
 
     fetchBooks();
     renderBooks(books);
+}
+
+
+const searchBooks = () => {
+    const searchTerm = document.getElementById("bookSearch").value.toLowerCase();
+
+    let filteredBooks = [];
+
+    books.forEach(book => {
+        if(book.name.toLowerCase().includes(searchTerm)){
+            filteredBooks.push(book);
+        }
+    })
+
+    renderBooks(filteredBooks);
 }

@@ -4,6 +4,8 @@
     padding: 0;
 }
 
+/* BOOTSTRAP EDITS*/
+
 .card-body{
     background-color: black;
     color: white;
@@ -25,4 +27,20 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+}
+
+#navbarNav>.form-control{
+    margin: 0.5rem 2rem;
+    width: 80%;
+}
+
+/* SEARCH */
+
+.hidden-submit {
+    border: 0 none;
+    height: 0;
+    width: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
 }
