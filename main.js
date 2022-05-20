@@ -121,12 +121,6 @@ const postBook = () => {
         postAuthor(bookFormAuthor);
     }
 
-    console.log("Name: "+ bookFormName);
-    console.log("Genre: "+ bookFormGenre);
-    console.log("Image: "+ bookFormImage);
-    console.log("Author: "+ bookAuthorId);
-
-
     fetch(`${BASE_URL}/books`, {
         method: 'POST', 
         headers: new Headers({'content-type': 'application/json'}),
@@ -134,7 +128,7 @@ const postBook = () => {
             name: bookFormName,
             genre: bookFormGenre,
             image: bookFormImage,
-            author: bookFormAuthor
+            authorId: bookAuthorId
         })
     })
     .then(res => {
