@@ -25,7 +25,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="#filters" role="button" data-bs-toggle="offcanvas" aria-controls="filters">Filters</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Pricing</a>
@@ -34,6 +34,25 @@
           </div>
         </div>
     </nav>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="filters" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Filters:</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <form>
+          <div class="form-floating mb-3">
+            <input type="text" oninput="authorFilter()" class="form-control" id="authorFilter" placeholder="name">
+            <label for="authorFilter">Author:</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="genreFilter" placeholder="genre">
+            <label for="genreFilter">Genre:</label>
+          </div>
+          <button type="submit" onclick="filterBooks()" class="btn btn-dark">Refresh results</button>
+        </form>
+      </div>
+    </div>
     <div id="booksRow">
 
     </div>
