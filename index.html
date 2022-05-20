@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
-    <script src="main.js"></script>
     <title>BookShop</title>
 </head>
 <body>
@@ -34,6 +33,25 @@
     <div id="booksRow">
 
     </div>
+    <form>
+        <div class="mb-3">
+          <label for="bookName" class="form-label">Name:</label>
+          <input type="text" class="form-control" id="bookName">
+        </div>
+        <div class="mb-3">
+          <label for="bookGenre" class="form-label">Genre:</label>
+          <input type="text" class="form-control" id="bookGenre">
+        </div>
+        <div class="mb-3">
+            <label for="bookImage" class="form-label">Image:</label>
+            <input type="text" class="form-control" id="bookImage">
+        </div>
+        <div class="mb-3">
+            <label for="bookAuthor" class="form-label">Author:</label>
+            <input type="text" class="form-control" id="bookAuthor">
+        </div>
+        <button type="button" onclick="postBook()" class="btn btn-dark">Submit</button>
+      </form>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -58,7 +76,11 @@
                 <div class="mb-3">
                     <label for="book-genre" class="col-form-label">Genre:</label>
                     <input type="text" class="form-control" id="book-genre">
-                  </div>
+                </div>
+                <div class="mb-3">
+                    <label for="book-author" class="col-form-label">AuthorID:</label>
+                    <input type="text" class="form-control" id="book-author" disabled>
+                </div>
               </form>
             </div>
             <div class="modal-footer">

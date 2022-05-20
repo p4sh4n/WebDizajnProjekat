@@ -1,8 +1,10 @@
 const BASE_URL = "https://ptf-web-dizajn-2022.azurewebsites.net/";
 
 let books = [];
+let authors = [];
 
-fetch(`${BASE_URL}/books`)
+const fetchBooks = () => {
+    fetch(`${BASE_URL}/books`)
     .then(res => {
         return res.json();
     })
@@ -10,6 +12,18 @@ fetch(`${BASE_URL}/books`)
         books = data;
         renderBooks(data);
     });
+}
+
+fetchBooks();
+
+fetch(`${BASE_URL}/authors`)
+    .then(res => {
+        return res.json();
+    })
+    .then(data => {
+        authors = data;
+    });
+
 
 const renderBooks = (books) => {
     const booksRow = document.getElementById('booksRow');
@@ -23,8 +37,9 @@ const renderBooks = (books) => {
             <div class="card-body">
                 <h5 class="card-title">${book.name}</h5>
                 <p class="card-text">${book.genre}</p>
-                <button type="button" onclick="fillEditData(${book.id})" class="btn btn-light fillData" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Edit</button>
-                <button type="button" onclick="buyBook(${book.id})"class="btn btn-warning deleteData">Buy</button>
+                <p class="card-text">Author: ${book.author.name}</p>
+                <button type="button" onclick="fillEditData('${book.id}')" class="btn btn-light fillData" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Edit</button>
+                <button type="button" onclick="buyBook('${book.id}')"class="btn btn-warning deleteData">Buy</button>
             </div>
         </div>
         `;
@@ -40,16 +55,13 @@ const fillEditData = (bookId) => {
     const bookFormName = document.getElementById('book-name');
     const bookFormImage = document.getElementById('book-image');
     const bookFormGenre = document.getElementById('book-genre');
-
-    console.log("ID: "+ book.id);
-    console.log("Name: "+ book.name);
-    console.log("Image: "+ book.image);
-    console.log("Genre: "+ book.genre);
+    const bookFormAuthor = document.getElementById('book-author');
 
     bookFormId.value = book.id;
     bookFormName.value = book.name;
-    bookFormImage.value = book.imageUrl;
+    bookFormImage.value = book.image;
     bookFormGenre.value = book.genre;
+    bookFormAuthor.value = book.author.id;
 }
 
 const editbook = () => { 
@@ -57,15 +69,17 @@ const editbook = () => {
     const bookFormName = document.getElementById('book-name').value;
     const bookFormImage = document.getElementById('book-image').value;
     const bookFormGenre = document.getElementById('book-genre').value;
+    const bookFormAuthor = document.getElementById('book-author').value;
 
     fetch(`${BASE_URL}/books`, {
         method: 'PUT', 
         headers: new Headers({'content-type': 'application/json'}),
         body: JSON.stringify({
-            id: bookFormId,
+            bookId: bookFormId,
             name: bookFormName,
             image: bookFormImage,
-            genre: bookFormGenre
+            genre: bookFormGenre,
+            authorId: bookFormAuthor
         })
     })
     .then(res => {
@@ -76,13 +90,56 @@ const editbook = () => {
 }
 
 const buyBook = (id) => {
-    fetch(`${BASE_URL}/books/${id}`, {
+    fetch(`${BASE_URL}/books/{${id}}`, {
         method: "DELETE",
     }).then((res) => {
         if(!res.ok){
             alert('Error');
         }
     })
-    books = books.slice(id)
-    renderBooks (books)
+    books = books.slice(id);
+    renderBooks(books);
+}
+
+
+const postBook = () => {
+    const bookFormName = document.getElementById('bookName').value;
+    const bookFormGenre = document.getElementById('bookGenre').value;
+    const bookFormImage = document.getElementById('bookImage').value;
+    const bookFormAuthor = document.getElementById('bookAuthor').value;
+    let bookAuthorId;
+    let authorExists = false;
+
+    authors.forEach(author =>{
+        if(author.name===bookFormAuthor){
+            bookAuthorId = author.id;
+            authorExists = true;
+        } 
+    })
+
+    if(!authorExists){
+        postAuthor(bookFormAuthor);
+    }
+
+    console.log("Name: "+ bookFormName);
+    console.log("Genre: "+ bookFormGenre);
+    console.log("Image: "+ bookFormImage);
+    console.log("Author: "+ bookAuthorId);
+
+
+    fetch(`${BASE_URL}/books`, {
+        method: 'POST', 
+        headers: new Headers({'content-type': 'application/json'}),
+        body: JSON.stringify({
+            name: bookFormName,
+            genre: bookFormGenre,
+            image: bookFormImage,
+            author: bookFormAuthor
+        })
+    })
+    .then(res => {
+        if(!res.ok){
+            alert('Error');
+        }
+    })
 }
