@@ -64,14 +64,14 @@ const fillEditData = (bookId) => {
     bookFormAuthor.value = book.author.id;
 }
 
-const editbook = () => { 
+const editbook = async () => { 
     const bookFormId = document.getElementById('book-id').value;
     const bookFormName = document.getElementById('book-name').value;
     const bookFormImage = document.getElementById('book-image').value;
     const bookFormGenre = document.getElementById('book-genre').value;
     const bookFormAuthor = document.getElementById('book-author').value;
 
-    fetch(`${BASE_URL}/books`, {
+    await fetch(`${BASE_URL}/books`, {
         method: 'PUT', 
         headers: new Headers({'content-type': 'application/json'}),
         body: JSON.stringify({
@@ -87,22 +87,25 @@ const editbook = () => {
             alert('Error');
         }
     })
+
+    fetchBooks();
+    renderBooks(books);
 }
 
-const buyBook = (id) => {
-    fetch(`${BASE_URL}/books/{${id}}`, {
+const buyBook = async (id) => {
+    await fetch(`${BASE_URL}/books/{${id}}`, {
         method: "DELETE",
     }).then((res) => {
         if(!res.ok){
             alert('Error');
         }
     })
-    books = books.slice(id);
+    fetchBooks();
     renderBooks(books);
 }
 
 
-const postBook = () => {
+const postBook = async () => {
     const bookFormName = document.getElementById('bookName').value;
     const bookFormGenre = document.getElementById('bookGenre').value;
     const bookFormImage = document.getElementById('bookImage').value;
@@ -121,7 +124,7 @@ const postBook = () => {
         postAuthor(bookFormAuthor);
     }
 
-    fetch(`${BASE_URL}/books`, {
+    await fetch(`${BASE_URL}/books`, {
         method: 'POST', 
         headers: new Headers({'content-type': 'application/json'}),
         body: JSON.stringify({
@@ -136,4 +139,7 @@ const postBook = () => {
             alert('Error');
         }
     })
+
+    fetchBooks();
+    renderBooks(books);
 }
