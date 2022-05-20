@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.card-body{
+    background-color: black;
+    color: white;
+}
+
+.navbar-expand-lg .navbar-collapse {
+    justify-content: flex-end;
+}
+
+.nav-link {
+    margin: 0 2rem;
+}
+
+.navbar-brand{
+    margin: 0 2rem;
+}
+
+#booksRow{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
