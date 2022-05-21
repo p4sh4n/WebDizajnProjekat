@@ -4,6 +4,14 @@
     padding: 0;
 }
 
+body{
+    background-image: url(https://img.freepik.com/free-vector/hazy-black-ink-texture-with-brushstrokes_125540-1360.jpg?t=st=1653159031~exp=1653159631~hmac=6ce424d0dadd66d5aa6df8d39a8a166e7c6bf6dd1269cf896c824efe245e5d62&w=1380);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
 /* BOOTSTRAP EDITS*/
 
 .card-body{
@@ -34,13 +42,167 @@
     width: 80%;
 }
 
-/* SEARCH */
+.mx-2{
+    margin-left: 2rem !important;
+    margin-right: 2rem !important;
+}
 
-.hidden-submit {
-    border: 0 none;
-    height: 0;
-    width: 0;
-    padding: 0;
-    margin: 0;
+.my-2{
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+}
+
+#postBook>.form-floating, #postFormSubmit{
+    margin: 0 10vw;
+}
+
+.card{
+    box-shadow: 0 0 20px 0 rgba(0,0, 0, 0.5);
+}
+
+/* NEW BOOK */
+
+#postBook{
+    padding: 15vh 0 5vh 0;
+    position: relative;
+}
+
+.navLogo{
+    aspect-ratio: 1 / 1;
+    height: 40px;
+}
+
+section{
+    height: 100vh;
+    width: 100%;
+    position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+section img:first-of-type{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+section img:last-of-type{
+    position: absolute;
+    bottom: 0%;
+    right: -10%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+section::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, #fff, transparent);
+    z-index: 100;
+}
+
+#postBook::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, #fff, transparent);
+    z-index: 100;
+}
+
+section::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #111;
+    z-index: 100;
+    mix-blend-mode: color;
+}
+
+#homeContent{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+}
+
+.naslov{
+    position: relative;
+    font-size: 10rem;
+    color: #fff;
+    z-index: 1;
+    margin-bottom: 2rem;
+}
+
+.tekst{
+    position: relative;
+    font-size: 1.5rem;
+    color: #fff;
+    z-index: 1;
+    width: 370px;
+}
+
+#homeContent>.btn{
+    width: 370px;
+    position: relative;
+    z-index: 1;
+}
+
+#booksRow{
+    background-image: url(https://img.freepik.com/free-vector/white-abstract-wallpaper_23-2148830026.jpg?w=2000);
+    background-position: center;
+    background-repeat: repeat-y;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+@media only screen and (max-width: 40em){
+    section img:last-of-type{
+        top: 50%;
+        left: 0%;
+        width: 100%;
+        height: 50%;
+        object-fit: cover;
+        pointer-events: none;
+    }
+
+    #homeContent{
+        margin-left: 0%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .naslov{
+        font-size: 4rem;
+        color: #fff;
+        z-index: 1;
+        margin-bottom: 2rem;
+    }
+
+    .tekst{
+        font-size: 1rem;
+        color: #fff;
+        z-index: 1;
+        width: 300px;
+    }
+    
+    #homeContent>.btn{
+        width: 300px;
+        position: relative;
+        z-index: 1;
+    }
 }

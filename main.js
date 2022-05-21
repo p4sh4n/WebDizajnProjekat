@@ -276,3 +276,15 @@ const filterBooks = () => { //Kreiranje novog niza knjiga na osnovu filtera, pok
 
     renderBooks(filteredBooks);
 }
+
+/* PARALLAX */
+
+const bg = document.getElementById('background');
+const content = document.getElementById('homeContent');
+
+window.addEventListener('scroll', function(){
+    var value = window.scrollY;
+
+    bg.style.top = value * 0.5 + 'px';
+    content.style.top = value * 0.9 + 'px';
+})

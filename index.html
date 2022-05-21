@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="https://icons-for-free.com/download-icon-book+books+education+knowledge+learning+reading+icon-1320085877896372664_512.png">
     <title>BookShop</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">BookShop</a>
+            <a class="navbar-brand" href="#home"><img class="navLogo" src="https://icons-for-free.com/download-icon-book+books+education+knowledge+learning+reading+icon-1320085877896372664_512.png" alt=""></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -22,19 +23,22 @@
                 </datalist>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="#home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#filters" role="button" data-bs-toggle="offcanvas" aria-controls="filters">Filters</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
+                        <a class="nav-link" href="#booksRow">Shop</a>
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#postBook">AddBook</a>
+                  </li>
                 </ul>
           </div>
         </div>
     </nav>
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="filters" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="filters" aria-labelledby="offcanvasExampleLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasExampleLabel">Filters:</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -53,40 +57,48 @@
         </form>
       </div>
     </div>
+    <section id="home">
+      <div id="homeContent">
+        <h1 class="naslov">BookShop</h1>
+        <p class="tekst">Choose from our wide assortment of top rated books</p>
+      </div>
+      <img id = "background" src="https://img.freepik.com/free-vector/hazy-black-ink-texture-with-brushstrokes_125540-1360.jpg?t=st=1653159031~exp=1653159631~hmac=6ce424d0dadd66d5aa6df8d39a8a166e7c6bf6dd1269cf896c824efe245e5d62&w=1380" alt="">
+      <img id = "book" src="https://pbs.twimg.com/media/Eefe8VZWAAQXzmZ.png:large" alt="">
+    </section>
     <div id="booksRow">
 
     </div>
-    <form class="needs-validation" novalidate>
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="bookName" placeholder="name" required>
-        <label for="bookName">Name:</label>
-        <div class="invalid-feedback">
-          Please enter a name.
+      <form id="postBook" class="needs-validation" novalidate>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="bookName" placeholder="name" required>
+          <label for="bookName">Name:</label>
+          <div class="invalid-feedback">
+            Please enter a name.
+          </div>
         </div>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="bookGenre" placeholder="genre" required>
-        <label for="bookGenre">Genre:</label>
-        <div class="invalid-feedback">
-          Please enter a genre.
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="bookGenre" placeholder="genre" required>
+          <label for="bookGenre">Genre:</label>
+          <div class="invalid-feedback">
+            Please enter a genre.
+          </div>
         </div>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="bookImage" placeholder="image" required>
-        <label for="bookImage">Image(url):</label>
-        <div class="invalid-feedback">
-          Please enter an image url.
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="bookImage" placeholder="image" required>
+          <label for="bookImage">Image(url):</label>
+          <div class="invalid-feedback">
+            Please enter an image url.
+          </div>
         </div>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="bookAuthor" placeholder="author" required>
-        <label for="bookAuthor">Author:</label>
-        <div class="invalid-feedback">
-          Please enter an author.
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="bookAuthor" placeholder="author" required>
+          <label for="bookAuthor">Author:</label>
+          <div class="invalid-feedback">
+            Please enter an author.
+          </div>
         </div>
-      </div>
-      <button id="postFormSubmit" class="btn btn-dark">Submit</button>
-    </form>
+        <button id="postFormSubmit" class="btn btn-warning">Submit</button>
+      </form>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
