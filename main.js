@@ -122,6 +122,16 @@ const buyBook = async (id) => {
     renderBooks(books);
 }
 
+document.querySelector("#postFormSubmit").addEventListener("click", function(event) {
+    postBook();
+    event.preventDefault();
+}, false);
+
+document.querySelector("#filterSubmit").addEventListener("click", function(event) {
+    filterBooks();
+    event.preventDefault();
+}, false);
+
 const postBook = async () => { //Post metoda, nakon fetcha ponovo renderuje content stranice
     const bookFormName = document.getElementById('bookName').value;
     const bookFormGenre = document.getElementById('bookGenre').value;
