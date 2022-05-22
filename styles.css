@@ -168,6 +168,11 @@ section::after{
     background-attachment: fixed;
 }
 
+.linkAttribute{
+    color: #111;
+    opacity: 50%;
+}
+
 @media only screen and (max-width: 40em){
     section img:last-of-type{
         top: 50%;
