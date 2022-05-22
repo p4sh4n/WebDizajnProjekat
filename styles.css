@@ -5,7 +5,7 @@
 }
 
 body{
-    background-image: url(https://img.freepik.com/free-vector/hazy-black-ink-texture-with-brushstrokes_125540-1360.jpg?t=st=1653159031~exp=1653159631~hmac=6ce424d0dadd66d5aa6df8d39a8a166e7c6bf6dd1269cf896c824efe245e5d62&w=1380);
+    background-image: url(https://images.unsplash.com/photo-1578662996442-48f60103fc96?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170);
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
@@ -166,11 +166,6 @@ section::after{
     background-repeat: repeat-y;
     background-size: cover;
     background-attachment: fixed;
-}
-
-.linkAttribute{
-    color: #111;
-    opacity: 50%;
 }
 
 @media only screen and (max-width: 40em){
